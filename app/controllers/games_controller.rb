@@ -1,6 +1,9 @@
 class GamesController < ApplicationController
+  include Scoring
+
   def new
     dice = roll_dice
+    @test_score = four_of_a_kind([1,1,2,2,2])
     @turn = Turn.create(dice_hash(dice))
 
     @fields = %w(ones twos threes fours fives sixes
