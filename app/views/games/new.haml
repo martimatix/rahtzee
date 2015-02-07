@@ -1,1 +1,19 @@
-%h1 Hello World
+%h1 Rahtzee
+
+= form_tag games_roll_again_path, :method => :post do
+  %ul
+    - (1..5).to_a.each do |i|
+      %li
+        = "Dice #{i}: #{@dice[i-1]}"
+        = check_box_tag "dice_#{i}"
+  = submit_tag 'Roll Dice - 3'
+
+= form_tag "/games/enter_score", :method => :post do
+  %ul
+    - @fields.each do |field|
+      %li
+        = field
+  = submit_tag 'Enter Score'
+
+
+
