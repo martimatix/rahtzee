@@ -14,7 +14,7 @@ class GamesController < ApplicationController
     @turn = Turn.last    
     roll_count = @turn.roll_counter
     if roll_count >= 3
-      redirect_to(games_error_path) 
+      redirect_to(games_error_path)
       return
     end
     @turn.update :roll_counter => (roll_count + 1)

@@ -16,6 +16,7 @@
   %ul
     - @fields.each do |field|
       %li
+        = radio_button_tag 'score', field
         = field
   = submit_tag 'Enter Score'
 
