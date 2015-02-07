@@ -7,9 +7,8 @@ class GamesController < ApplicationController
     @turn = Turn.create(dice_hash(dice))
 
     @fields = %w(ones twos threes fours fives sixes
-                 subtotal bonus upper_score_total
                  three_of_a_kind four_of_a_kind full_house
-                 small_straight large_straight rahtzee)
+                 small_straight large_straight chance rahtzee)
   end
 
   def roll_again
@@ -29,11 +28,17 @@ class GamesController < ApplicationController
     end
 
     @fields = %w(ones twos threes fours fives sixes
-             subtotal bonus upper_score_total
-             three_of_a_kind four_of_a_kind full_house
-             small_straight large_straight rahtzee)
+                 three_of_a_kind four_of_a_kind full_house
+                 small_straight large_straight chance rahtzee)
 
     render "new"
+  end
+
+  def enter_score
+    @turn = Turn.last
+    dice = extract_dice(@turn)
+    @score = eval("#{params['score_field']}(dice)")
+    @dice = dice.to_s
   end
 
   def error
@@ -60,4 +65,11 @@ class GamesController < ApplicationController
     end
     dice_to_roll
   end
+
+  def extract_dice(turn)
+    dice = []
+    (1..5).to_a.each { |i| dice << eval("turn.dice_#{i}") }
+    dice
+  end 
+      
 end

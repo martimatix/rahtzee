@@ -28,6 +28,10 @@ Checks to see if you have 4 of the same dice
 		of_a_kind dice, 4
 	end
 
+	def rahtzee(dice)
+		of_a_kind dice, 5
+	end
+
 =begin
 @param d [Array<Fixnum>] the dice to be tested
 @return [Fixnum] the total of all the ones
