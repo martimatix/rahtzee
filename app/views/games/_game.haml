@@ -1,9 +1,5 @@
 %h1 Rahtzee
 
-%p
-  Roll count:
-  = @turn.roll_counter
-
 = form_tag games_roll_again_path, :method => :post do
   %ul
     - (1..5).to_a.each do |i|
@@ -18,6 +14,3 @@
       %li
         = field
   = submit_tag 'Enter Score'
-
-
-

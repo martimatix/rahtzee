@@ -7,7 +7,7 @@ class CreateTurns < ActiveRecord::Migration
       t.integer :dice_4
       t.integer :dice_5
 
-      t.integer :roll_counter
+      t.integer :roll_counter, :default => 1
 
       t.integer :game_id
 

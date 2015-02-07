@@ -8,7 +8,7 @@
 #  dice_3       :integer
 #  dice_4       :integer
 #  dice_5       :integer
-#  roll_counter :integer
+#  roll_counter :integer          default("1")
 #  game_id      :integer
 #  turn_over    :boolean          default("false")
 #  created_at   :datetime

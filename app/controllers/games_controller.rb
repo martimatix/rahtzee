@@ -3,6 +3,7 @@ class GamesController < ApplicationController
     @dice = roll_dice
     Turn.create(dice_hash(@dice))
 
+
     @fields = %w(ones twos threes fours fives sixes
                  subtotal bonus upper_score_total
                  three_of_a_kind four_of_a_kind full_house
@@ -10,7 +11,18 @@ class GamesController < ApplicationController
   end
 
   def roll_again
-    redirect_to(games_new_path)
+    # turn.last is crude
+    roll_count = Turn.last.roll_counter
+    @dice = roll_dice
+    @turn = Turn.last
+    Turn.last.update :roll_counter => (roll_count + 1)
+
+    @fields = %w(ones twos threes fours fives sixes
+             subtotal bonus upper_score_total
+             three_of_a_kind four_of_a_kind full_house
+             small_straight large_straight rahtzee)
+
+    render "new"
   end
 
   private
@@ -22,7 +34,7 @@ class GamesController < ApplicationController
   def dice_hash(dice)
     hash = {}
     (1..5).each do |i|
-      hash["dice_#{i}".to_sym] = dice[i]
+      hash["dice_#{i}".to_sym] = dice[i-1]
     end
     hash
   end

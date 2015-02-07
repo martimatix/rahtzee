@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150206234120) do
     t.integer  "dice_3"
     t.integer  "dice_4"
     t.integer  "dice_5"
-    t.integer  "roll_counter"
+    t.integer  "roll_counter", default: 1
     t.integer  "game_id"
     t.boolean  "turn_over",    default: false
     t.datetime "created_at"
