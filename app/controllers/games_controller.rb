@@ -11,14 +11,18 @@ class GamesController < ApplicationController
 
   def roll_again
     # turn.last is crude need to change to turn id
-    roll_count = Turn.last.roll_counter
-    @turn = Turn.last
+    @turn = Turn.last    
+    roll_count = @turn.roll_counter
+    if roll_count >= 3
+      redirect_to(games_error_path) 
+      return
+    end
     @turn.update :roll_counter => (roll_count + 1)
 
     # Roll Dice
     dice_to_roll = dice_check(params)
-    dice_to_roll.each_with_index do |user_chose_to_roll_dice, i|
-      eval("@turn.update :dice_#{ i+1 } => rand(1..6)") if user_chose_to_roll_dice
+    dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
+      eval("@turn.update :dice_#{ i+1 } => rand(1..6)") if user_chose_to_roll_die
     end
 
     @fields = %w(ones twos threes fours fives sixes
@@ -27,6 +31,9 @@ class GamesController < ApplicationController
              small_straight large_straight rahtzee)
 
     render "new"
+  end
+
+  def error
   end
 
   private

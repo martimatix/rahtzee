@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/games/new' => 'games#new'
   #will need to change this to /games/:id/roll_dice later
   post '/games/roll_again' => 'games#roll_again'
+  get '/games/error' => 'games#error'
 
 
 end
