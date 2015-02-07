@@ -8,7 +8,7 @@
   %ul
     - (1..5).to_a.each do |i|
       %li
-        = "Dice #{i}: #{@dice[i-1]}"
+        = "Dice #{i}: " + eval("@turn.dice_#{i}").to_s
         = check_box_tag "dice_#{i}"
   = submit_tag 'Roll Dice - 3'
 

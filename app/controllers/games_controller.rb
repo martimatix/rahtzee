@@ -1,8 +1,7 @@
 class GamesController < ApplicationController
   def new
-    @dice = roll_dice
-    Turn.create(dice_hash(@dice))
-
+    dice = roll_dice
+    @turn = Turn.create(dice_hash(dice))
 
     @fields = %w(ones twos threes fours fives sixes
                  subtotal bonus upper_score_total
@@ -11,11 +10,16 @@ class GamesController < ApplicationController
   end
 
   def roll_again
-    # turn.last is crude
+    # turn.last is crude need to change to turn id
     roll_count = Turn.last.roll_counter
-    @dice = roll_dice
     @turn = Turn.last
-    Turn.last.update :roll_counter => (roll_count + 1)
+    @turn.update :roll_counter => (roll_count + 1)
+
+    # Roll Dice
+    dice_to_roll = dice_check(params)
+    dice_to_roll.each_with_index do |user_chose_to_roll_dice, i|
+      eval("@turn.update :dice_#{ i+1 } => rand(1..6)") if user_chose_to_roll_dice
+    end
 
     @fields = %w(ones twos threes fours fives sixes
              subtotal bonus upper_score_total
@@ -37,5 +41,13 @@ class GamesController < ApplicationController
       hash["dice_#{i}".to_sym] = dice[i-1]
     end
     hash
+  end
+
+  def dice_check(params)
+    dice_to_roll = []
+    (1..5).each do |i|
+      dice_to_roll[i - 1] = params.keys.include? "dice_#{i}"
+    end
+    dice_to_roll
   end
 end
