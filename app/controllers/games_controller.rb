@@ -19,11 +19,10 @@ class GamesController < ApplicationController
       redirect_to(games_error_path)
       return
     end
-    @turn.update :roll_counter => (roll_count + 1)
+    @turn.update roll_counter: (roll_count + 1)
 
     # Roll Dice
-    dice_to_roll = dice_check(params)
-    dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
+    dice_check(params).each_with_index do |user_chose_to_roll_die, i|
       eval("@turn.update :dice_#{ i+1 } => rand(1..6)") if user_chose_to_roll_die
     end
 
@@ -51,23 +50,19 @@ class GamesController < ApplicationController
   end
 
   def dice_hash(dice)
-    hash = {}
-    (1..5).each do |i|
-      hash["dice_#{i}".to_sym] = dice[i-1]
-    end
+    hash = Hash.new
+    (1..5).each {|i| hash["dice_#{i}".to_sym] = dice[i-1]}
     hash
   end
 
   def dice_check(params)
-    dice_to_roll = []
-    (1..5).each do |i|
-      dice_to_roll[i - 1] = params.keys.include? "dice_#{i}"
-    end
+    dice_to_roll = Array.new
+    (1..5).each { |i| dice_to_roll[i - 1] = params.keys.include? "dice_#{i}" }
     dice_to_roll
   end
 
   def extract_dice(turn)
-    dice = []
+    dice = Array.new
     (1..5).to_a.each { |i| dice << eval("turn.dice_#{i}") }
     dice
   end 
