@@ -19,7 +19,8 @@
 #  full_house        :integer
 #  small_straight    :integer
 #  large_straight    :integer
-#  yahtzee           :integer
+#  chance            :integer
+#  rahtzee           :integer
 #  lower_score       :integer
 #  user_id           :integer
 #  created_at        :datetime
@@ -28,4 +29,5 @@
 
 class Game < ActiveRecord::Base
   has_many :turns
+  belongs_to :user
 end
