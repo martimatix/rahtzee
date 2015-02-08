@@ -7,6 +7,7 @@ class GamesController < ApplicationController
     dice = roll_dice
     @turn = Turn.create(dice_hash(dice))
     @game = Game.create
+    @current_user.games << @game
 
     @fields = %w(ones twos threes fours fives sixes
                  three_of_a_kind four_of_a_kind full_house
