@@ -55,10 +55,12 @@ ActiveRecord::Schema.define(version: 20150208022322) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
+    t.string   "name"
     t.string   "country"
     t.string   "gravatar_url"
     t.text     "about_me"
+    t.string   "password_digest"
+    t.boolean  "is_admin",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

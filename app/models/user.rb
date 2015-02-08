@@ -2,13 +2,15 @@
 #
 # Table name: users
 #
-#  id           :integer          not null, primary key
-#  username     :string
-#  country      :string
-#  gravatar_url :string
-#  about_me     :text
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id              :integer          not null, primary key
+#  name            :string
+#  country         :string
+#  gravatar_url    :string
+#  about_me        :text
+#  password_digest :string
+#  is_admin        :boolean          default("false")
+#  created_at      :datetime
+#  updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
