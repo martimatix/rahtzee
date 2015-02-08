@@ -9,9 +9,7 @@ class GamesController < ApplicationController
     @game = Game.create
     @current_user.games << @game
 
-    @fields = %w(ones twos threes fours fives sixes
-                 three_of_a_kind four_of_a_kind full_house
-                 small_straight large_straight chance rahtzee)
+    render "game"
   end
 
   def roll_again
@@ -31,11 +29,7 @@ class GamesController < ApplicationController
       eval("@turn.update :dice_#{ i+1 } => rand(1..6)") if user_chose_to_roll_die
     end
 
-    @fields = %w(ones twos threes fours fives sixes
-                 three_of_a_kind four_of_a_kind full_house
-                 small_straight large_straight chance rahtzee)
-
-    render "new"
+    render "game"
   end
 
   def enter_score
@@ -54,11 +48,7 @@ class GamesController < ApplicationController
     dice = roll_dice
     @turn = Turn.create(dice_hash(dice))
 
-    @fields = %w(ones twos threes fours fives sixes
-                 three_of_a_kind four_of_a_kind full_house
-                 small_straight large_straight chance rahtzee)
-
-    render "new"
+    render "game"
   end
 
   def error

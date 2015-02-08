@@ -14,7 +14,7 @@
 
 = form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
   %ul
-    - @fields.each do |field|
+    - Game.fields.each do |field|
       %li
         = radio_button_tag 'score_field', field
         = field

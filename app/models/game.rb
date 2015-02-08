@@ -30,4 +30,10 @@
 class Game < ActiveRecord::Base
   has_many :turns
   belongs_to :user
+
+  def self.fields
+    %w(ones twos threes fours fives sixes
+       three_of_a_kind four_of_a_kind full_house
+       small_straight large_straight chance rahtzee)
+  end
 end
