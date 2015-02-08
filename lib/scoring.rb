@@ -13,7 +13,8 @@ Checks to see if dice has 3 of one kind of dice and 2 of another
 	def full_house(dice)
 		f_table = freq dice
 		if (f_table.length == 2 && f_table.has_value?(3)) || f_table.length == 1 then 25			
-		else 0 end
+		else 0
+		end
 	end
 	
 =begin
@@ -123,8 +124,9 @@ Checks to see if you have 3 of the same dice
 
 	def single_face(dice, value)
 	 	v = dice.select{|number| number == value}.reduce :+
-	 	unless v.nil? then  v
-		else 0 end
+	 	unless v.nil? then v
+		else 0
+		end
 	end
 
 	def freq(dice)
@@ -137,7 +139,8 @@ Checks to see if you have 3 of the same dice
 
 	def of_a_kind(dice, limit)
 		if modal_frequency(dice) >= limit then dice.reduce :+
-		else 0 end
+		else 0
+		end
 	end
 
 =begin	
