@@ -29,7 +29,7 @@ class GamesController < ApplicationController
     # Roll Dice
     dice_to_roll = dice_check(params)
     dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
-      eval("@turn.update :dice_#{ i+1 } => rand(1..6)") if user_chose_to_roll_die
+      @turn.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
     end
 
     render "game"
@@ -38,11 +38,14 @@ class GamesController < ApplicationController
   def enter_score
     @game = Game.find params[:game_id]
     @turn = Turn.find params[:turn_id] 
+
     dice = extract_dice(@turn)
     score_field = params['score_field']
-    @score = eval("#{params['score_field']}(dice)")
-    eval ("@game.update :#{score_field} => #{@score}")
-    @dice = dice.to_s
+    score = eval("#{params['score_field']}(dice)")
+    
+    @game.send(score_field + '=', score)
+    @game.save
+    # raise params.inspect
     redirect_to :controller => 'games', :action => 'new_turn', :game_id => @game.id
   end
 
@@ -52,12 +55,6 @@ class GamesController < ApplicationController
     @turn = Turn.create(dice_hash(dice))
 
     render "game"
-  end
-
-  def error
-    @game = Game.find params[:game_id]
-    @turn = Turn.find params[:turn_id] 
-    dice = extract_dice(@turn)
   end
 
   private
