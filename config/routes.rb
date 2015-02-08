@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/games/:game_id/:turn_id/roll_again' => 'games#roll_again'
   post '/games/:game_id/:turn_id/enter_score' => 'games#enter_score'
   get '/games/:game_id/:turn_id/error' => 'games#error'
+  # todo: merge games#new_turn with games#new
+  get '/games/:game_id/new_turn' => 'games#new_turn'
 
 
 end
