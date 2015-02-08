@@ -8,7 +8,7 @@
   Test Score:
   = @test_score
 
-= form_tag games_roll_again_path, :method => :post do
+= form_tag "/games/#{@game.id}/#{@turn.id}/roll_again", :method => :post do
   %ul
     - (1..5).to_a.each do |i|
       %li
@@ -16,7 +16,7 @@
         = check_box_tag "dice_#{i}"
   = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }"
 
-= form_tag "/games/enter_score", :method => :post do
+= form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
   %ul
     - @fields.each do |field|
       %li

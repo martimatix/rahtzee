@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   root :to => 'games#new'
 
   get '/games/new' => 'games#new'
-  #will need to change this to /games/:id/roll_dice later
-  post '/games/roll_again' => 'games#roll_again'
-  post '/games/enter_score' => 'games#enter_score'
-  get '/games/error' => 'games#error'
+  # to do: add user id to path for greater verification
+  post '/games/:game_id/:turn_id/roll_again' => 'games#roll_again'
+  post '/games/:game_id/:turn_id/enter_score' => 'games#enter_score'
+  get '/games/:game_id/:turn_id/error' => 'games#error'
 
 
 end

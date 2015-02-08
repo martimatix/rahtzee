@@ -5,6 +5,7 @@ class GamesController < ApplicationController
     dice = roll_dice
     @test_score = four_of_a_kind([1,1,2,2,2])
     @turn = Turn.create(dice_hash(dice))
+    @game = Game.create
 
     @fields = %w(ones twos threes fours fives sixes
                  three_of_a_kind four_of_a_kind full_house
@@ -13,7 +14,8 @@ class GamesController < ApplicationController
 
   def roll_again
     # turn.last is crude need to change to turn id
-    @turn = Turn.last    
+    @game = Game.find params[:game_id]
+    @turn = Turn.find params[:turn_id]  
     roll_count = @turn.roll_counter
     if roll_count >= 3
       redirect_to(games_error_path)
@@ -35,9 +37,12 @@ class GamesController < ApplicationController
   end
 
   def enter_score
-    @turn = Turn.last
+    @game = Game.find params[:game_id]
+    @turn = Turn.find params[:turn_id] 
     dice = extract_dice(@turn)
+    score_field = params['score_field']
     @score = eval("#{params['score_field']}(dice)")
+    eval ("@game.update :#{score_field} => #{@score}")
     @dice = dice.to_s
   end
 
