@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206234120) do
+ActiveRecord::Schema.define(version: 20150208022322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20150206234120) do
     t.integer  "roll_counter", default: 1
     t.integer  "game_id"
     t.boolean  "turn_over",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "country"
+    t.string   "gravatar_url"
+    t.text     "about_me"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
