@@ -22,7 +22,8 @@ class CreateGames < ActiveRecord::Migration
       t.integer :full_house
       t.integer :small_straight
       t.integer :large_straight
-      t.integer :yahtzee
+      t.integer :chance
+      t.integer :rahtzee
       t.integer :lower_score
 
       # Administration

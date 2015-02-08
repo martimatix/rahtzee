@@ -29,7 +29,7 @@ Checks to see if you have 4 of the same dice
 	end
 
 	def rahtzee(dice)
-		of_a_kind dice, 5
+		modal_frequency(dice) == 5 ? 50 : 0
 	end
 
 =begin

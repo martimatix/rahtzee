@@ -4,10 +4,6 @@
   Roll count:
   = @turn.roll_counter
 
-%p
-  Test Score:
-  = @test_score
-
 = form_tag "/games/#{@game.id}/#{@turn.id}/roll_again", :method => :post do
   %ul
     - (1..5).to_a.each do |i|
@@ -22,6 +18,7 @@
       %li
         = radio_button_tag 'score_field', field
         = field
+        = eval("@game.#{ field }")
   = submit_tag 'Enter Score'
 
 
