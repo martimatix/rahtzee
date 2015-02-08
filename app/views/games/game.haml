@@ -10,7 +10,9 @@
       %li
         = "Dice #{i}: " + eval("@turn.dice_#{i}").to_s
         = check_box_tag "dice_#{i}"
-  = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }"
+  = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }",
+    disabled: @turn.roll_counter >= 3
+
 
 = form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
   %ul

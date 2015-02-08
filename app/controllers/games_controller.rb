@@ -18,7 +18,10 @@ class GamesController < ApplicationController
     @turn = Turn.find params[:turn_id]  
     roll_count = @turn.roll_counter
     if roll_count >= 3
-      redirect_to(games_error_path)
+      redirect_to :controller => 'games', :action => 'error',
+                  :game_id => @game.id,
+                  :turn_id => @turn.id,
+                  :error_id => "1"
       return
     end
     @turn.update :roll_counter => (roll_count + 1)
@@ -52,6 +55,9 @@ class GamesController < ApplicationController
   end
 
   def error
+    @game = Game.find params[:game_id]
+    @turn = Turn.find params[:turn_id] 
+    dice = extract_dice(@turn)
   end
 
   private
