@@ -33,8 +33,14 @@ class GamesController < ApplicationController
     @game = Game.find params[:game_id]
     @turn = Turn.find params[:turn_id] 
 
-    dice = extract_dice(@turn)
     score_field = params['score_field']
+
+    if score_field.nil?
+      render "game" 
+      return
+    end
+
+    dice = extract_dice(@turn)
     score = eval("#{score_field}(dice)")
     
     @game.send(score_field + '=', score)
