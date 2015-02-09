@@ -36,4 +36,5 @@ class Game < ActiveRecord::Base
        three_of_a_kind four_of_a_kind full_house
        small_straight large_straight chance rahtzee)
   end
+
 end

@@ -13,7 +13,6 @@ class GamesController < ApplicationController
   end
 
   def roll_again
-    # turn.last is crude need to change to turn id
     @game = Game.find params[:game_id]
     @turn = Turn.find params[:turn_id]  
     roll_count = @turn.roll_counter
