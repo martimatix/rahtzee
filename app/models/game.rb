@@ -37,4 +37,14 @@ class Game < ActiveRecord::Base
        small_straight large_straight chance rahtzee)
   end
 
+
+  def self.upper_scores
+    [:ones, :twos, :threes, :fours, :fives, :sixes]
+  end
+  
+  def self.lower_scores
+    [:three_of_a_kind, :four_of_a_kind, :full_house,
+     :small_straight, :large_straight, :chance, :rahtzee]
+  end
+
 end

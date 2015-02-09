@@ -16,11 +16,18 @@
 
 = form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
   %ul
-    - Game.fields.each do |field|
+    - Game.upper_scores.each do |field|
       %li
         = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
-        = field.humanize
+        = field.to_s.humanize
         = @game.send(field)
+
+    - Game.lower_scores.each do |field|
+      %li
+        = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
+        = field.to_s.humanize
+        = @game.send(field)
+
   = submit_tag 'Enter Score'
 
 
