@@ -45,6 +45,8 @@ class GamesController < ApplicationController
     @game.send(score_field + '=', score)
     @game.save
 
+    raw_upper
+
     if game_over?
       redirect_to games_game_over_path
     else
@@ -91,6 +93,13 @@ class GamesController < ApplicationController
     dice = []
     (1..5).to_a.each { |i| dice << eval("turn.dice_#{i}") }
     dice
+  end
+
+  # Raw upper score total (no bonus)
+  def raw_upper
+    upper_values = Game.upper_scores.map {|f| @game.send(f).to_i }
+    @game.send "raw_upper=", upper_values.reduce(:+)
+    @game.save
   end
 
   def game_over?

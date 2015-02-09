@@ -22,6 +22,10 @@
         = field.to_s.humanize
         = @game.send(field)
 
+    %li
+      Raw Upper:
+      = @game.raw_upper
+
     - Game.lower_scores.each do |field|
       %li
         = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
