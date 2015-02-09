@@ -1,55 +1,54 @@
 %h1 Rahtzee
 
-%p
-  Roll count:
-  = @turn.roll_counter
+%div.form-group
+  = form_tag "/games/#{@game.id}/#{@turn.id}/roll_again", :method => :post do
+    %ul
+      - (1..5).to_a.each do |i|
+        %li
+          - box_checked = @dice_to_roll[i-1]
+          = check_box_tag "dice_#{i}", '1', box_checked
+          = label_tag "dice_#{i}", "Dice #{i}: " + (@turn.send "dice_#{i}").to_s
+    = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }",
+      disabled: @turn.roll_counter >= 3
 
-= form_tag "/games/#{@game.id}/#{@turn.id}/roll_again", :method => :post do
-  %ul
-    - (1..5).to_a.each do |i|
+%div.form-group
+  = form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
+    %ul
+      - Game.upper_scores.each do |field|
+        %li
+          = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
+          = label_tag 'score_field_' + field.to_s, field.to_s.humanize
+          / Display Score
+          = @game.send(field)
+
       %li
-        - box_checked = @dice_to_roll[i-1]
-        = check_box_tag "dice_#{i}", '1', box_checked
-        = label_tag "dice_#{i}", "Dice #{i}: " + (@turn.send "dice_#{i}").to_s
-  = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }",
-    disabled: @turn.roll_counter >= 3
+        Subtotal: 
+        = @game.raw_upper.to_i
 
-
-= form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
-  %ul
-    - Game.upper_scores.each do |field|
       %li
-        = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
-        = field.to_s.humanize
-        = @game.send(field)
+        Bonus (>62): 
+        = @game.upper_score_bonus.to_i
 
-    %li
-      Subtotal: 
-      = @game.raw_upper.to_i
-
-    %li
-      Bonus (>62): 
-      = @game.upper_score_bonus.to_i
-
-    %li
-      Total:
-      = @game.upper_score.to_i
-
-    - Game.lower_scores.each do |field|
       %li
-        = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
-        = field.to_s.humanize
-        = @game.send(field)
+        Total:
+        = @game.upper_score.to_i
 
-    %li
-      Total:
-      = @game.lower_score.to_i
+      - Game.lower_scores.each do |field|
+        %li
+          = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
+          = label_tag 'score_field_' + field.to_s, field.to_s.humanize
+          / Display Score
+          = @game.send(field)
 
-    %li
-      Grand Total:
-      = @game.total_score.to_i
+      %li
+        Total:
+        = @game.lower_score.to_i
 
-  = submit_tag 'Enter Score'
+      %li
+        Grand Total:
+        = @game.total_score.to_i
+
+    = submit_tag 'Enter Score'
 
 
 
