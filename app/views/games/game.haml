@@ -9,7 +9,8 @@
     - (1..5).to_a.each do |i|
       %li
         = "Dice #{i}: " + (@turn.send "dice_#{i}").to_s
-        = check_box_tag "dice_#{i}"
+        - box_checked = @dice_to_roll[i-1]
+        = check_box_tag "dice_#{i}", '1', box_checked
   = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }",
     disabled: @turn.roll_counter >= 3
 

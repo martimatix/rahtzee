@@ -8,6 +8,7 @@ class GamesController < ApplicationController
     @turn = Turn.create(dice_hash(dice))
     @game = Game.create
     @current_user.games << @game
+    @dice_to_roll = [false] * 5
 
     render "game"
   end
@@ -19,8 +20,8 @@ class GamesController < ApplicationController
     @turn.update :roll_counter => (roll_count + 1)
 
     # Roll Dice
-    dice_to_roll = dice_check(params)
-    dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
+    @dice_to_roll = dice_check(params)
+    @dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
       @turn.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
       @turn.save
     end
@@ -60,6 +61,7 @@ class GamesController < ApplicationController
   def new_turn
     @game = Game.find params[:game_id]
     @turn = Turn.find params[:game_id]
+    @dice_to_roll = [false] * 5
 
     render "game"
   end
