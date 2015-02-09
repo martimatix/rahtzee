@@ -42,15 +42,17 @@ class GamesController < ApplicationController
 
     if game_over?
       redirect_to games_game_over_path
-    else 
-      redirect_to :controller => 'games', :action => 'new_turn', :game_id => @game.id
+    else
+      dice = roll_dice
+      @turn = Turn.create(dice_hash(dice)) 
+      redirect_to :controller => 'games', :action => 'new_turn',
+                  :game_id => @game.id, :turn_id => @turn.id
     end
   end
 
   def new_turn
     @game = Game.find params[:game_id]
-    dice = roll_dice
-    @turn = Turn.create(dice_hash(dice))
+    @turn = Turn.find params[:game_id]
 
     render "game"
   end
