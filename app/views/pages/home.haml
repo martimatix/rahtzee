@@ -1,5 +1,9 @@
 %h1 Welcome to Rahtzee
 
 - if @current_user.present?
+  %h2
+    Hi
+    = @current_user.name
+
   %p
     = link_to 'Play Rahtzee', games_new_path
