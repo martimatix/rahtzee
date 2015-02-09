@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/games/:game_id/:turn_id/enter_score' => 'games#enter_score'
   # todo: merge games#new_turn with games#new
   get '/games/:game_id/new_turn' => 'games#new_turn'
+  get '/games/game_over' => 'games#game_over'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'

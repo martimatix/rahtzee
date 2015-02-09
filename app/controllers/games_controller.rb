@@ -17,19 +17,13 @@ class GamesController < ApplicationController
     @game = Game.find params[:game_id]
     @turn = Turn.find params[:turn_id]  
     roll_count = @turn.roll_counter
-    if roll_count >= 3
-      redirect_to :controller => 'games', :action => 'error',
-                  :game_id => @game.id,
-                  :turn_id => @turn.id,
-                  :error_id => "1"
-      return
-    end
     @turn.update :roll_counter => (roll_count + 1)
 
     # Roll Dice
     dice_to_roll = dice_check(params)
     dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
       @turn.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
+      @turn.save
     end
 
     render "game"
@@ -41,12 +35,16 @@ class GamesController < ApplicationController
 
     dice = extract_dice(@turn)
     score_field = params['score_field']
-    score = eval("#{params['score_field']}(dice)")
+    score = eval("#{score_field}(dice)")
     
     @game.send(score_field + '=', score)
     @game.save
-    # raise params.inspect
-    redirect_to :controller => 'games', :action => 'new_turn', :game_id => @game.id
+
+    if game_over?
+      redirect_to games_game_over_path
+    else 
+      redirect_to :controller => 'games', :action => 'new_turn', :game_id => @game.id
+    end
   end
 
   def new_turn
@@ -55,6 +53,9 @@ class GamesController < ApplicationController
     @turn = Turn.create(dice_hash(dice))
 
     render "game"
+  end
+
+  def game_over
   end
 
   private
@@ -83,6 +84,11 @@ class GamesController < ApplicationController
     dice = []
     (1..5).to_a.each { |i| dice << eval("turn.dice_#{i}") }
     dice
+  end
+
+  def game_over?
+    game = Game.find params[:game_id]
+    Game.fields.all? {|f| game.send f}
   end 
       
 end
