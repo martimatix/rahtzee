@@ -13,7 +13,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :fives
       t.integer :sixes
       t.integer :raw_upper
-      t.integer :bonus_upper_score
+      t.integer :upper_score_bonus, :default => 0
       t.integer :upper_score
 
       # Lower Scores

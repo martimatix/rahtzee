@@ -23,14 +23,30 @@
         = @game.send(field)
 
     %li
-      Raw Upper:
-      = @game.raw_upper
+      Subtotal: 
+      = @game.raw_upper.to_i
+
+    %li
+      Bonus (>62): 
+      = @game.upper_score_bonus.to_i
+
+    %li
+      Total:
+      = @game.upper_score.to_i
 
     - Game.lower_scores.each do |field|
       %li
         = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
         = field.to_s.humanize
         = @game.send(field)
+
+    %li
+      Total:
+      = @game.lower_score.to_i
+
+    %li
+      Grand Total:
+      = @game.total_score.to_i
 
   = submit_tag 'Enter Score'
 

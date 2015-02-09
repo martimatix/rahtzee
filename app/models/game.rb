@@ -12,7 +12,7 @@
 #  fives             :integer
 #  sixes             :integer
 #  raw_upper         :integer
-#  bonus_upper_score :integer
+#  upper_score_bonus :integer          default("0")
 #  upper_score       :integer
 #  three_of_a_kind   :integer
 #  four_of_a_kind    :integer

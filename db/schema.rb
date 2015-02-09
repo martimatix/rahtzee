@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150208022322) do
     t.integer  "fives"
     t.integer  "sixes"
     t.integer  "raw_upper"
-    t.integer  "bonus_upper_score"
+    t.integer  "upper_score_bonus", default: 0
     t.integer  "upper_score"
     t.integer  "three_of_a_kind"
     t.integer  "four_of_a_kind"

@@ -45,7 +45,7 @@ class GamesController < ApplicationController
     @game.send(score_field + '=', score)
     @game.save
 
-    raw_upper
+    update_score
 
     if game_over?
       redirect_to games_game_over_path
@@ -98,7 +98,32 @@ class GamesController < ApplicationController
   # Raw upper score total (no bonus)
   def raw_upper
     upper_values = Game.upper_scores.map {|f| @game.send(f).to_i }
-    @game.send "raw_upper=", upper_values.reduce(:+)
+    @game.raw_upper = upper_values.reduce(:+)
+  end
+
+  def upper_score_bonus
+    @game.upper_score_bonus = 35 if @game.raw_upper > 62
+  end
+
+  def upper_score
+    @game.upper_score = @game.raw_upper + @game.upper_score_bonus
+  end
+
+  def lower_score
+    lower_values = Game.lower_scores.map {|f| @game.send(f).to_i }
+    @game.lower_score = lower_values.reduce(:+)
+  end
+
+  def total_score
+    @game.total_score = @game.upper_score + @game.lower_score
+  end
+
+  def update_score
+    raw_upper
+    upper_score_bonus
+    upper_score
+    lower_score
+    total_score
     @game.save
   end
 
