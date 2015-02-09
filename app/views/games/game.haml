@@ -18,7 +18,7 @@
   %ul
     - Game.fields.each do |field|
       %li
-        = radio_button_tag 'score_field', field
+        = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
         = field
         = eval("@game.#{ field }")
   = submit_tag 'Enter Score'
