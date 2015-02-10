@@ -3,8 +3,14 @@
 # Table name: games
 #
 #  id                :integer          not null, primary key
-#  total_score       :integer
+#  total_score       :integer          default("0")
 #  filled            :boolean          default("false")
+#  dice_1            :integer
+#  dice_2            :integer
+#  dice_3            :integer
+#  dice_4            :integer
+#  dice_5            :integer
+#  roll_counter      :integer          default("1")
 #  ones              :integer
 #  twos              :integer
 #  threes            :integer
@@ -28,7 +34,6 @@
 #
 
 class Game < ActiveRecord::Base
-  has_many :turns
   belongs_to :user
 
   def self.fields

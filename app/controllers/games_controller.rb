@@ -5,8 +5,7 @@ class GamesController < ApplicationController
 
   def new
     dice = roll_dice
-    @turn = Turn.create(dice_hash(dice))
-    @game = Game.create
+    @game = Game.create(dice_hash(dice))
     @current_user.games << @game
     @dice_to_roll = [false] * 5
 
@@ -14,16 +13,15 @@ class GamesController < ApplicationController
   end
 
   def roll_again
-    @game = Game.find params[:game_id]
-    @turn = Turn.find params[:turn_id]  
-    roll_count = @turn.roll_counter
-    @turn.update :roll_counter => (roll_count + 1)
+    @game = Game.find params[:game_id] 
+    roll_count = @game.roll_counter
+    @game.update :roll_counter => (roll_count + 1)
 
     # Roll Dice
     @dice_to_roll = dice_check(params)
     @dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
-      @turn.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
-      @turn.save
+      @game.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
+      @game.save
     end
 
     render "game"
@@ -31,7 +29,6 @@ class GamesController < ApplicationController
 
   def enter_score
     @game = Game.find params[:game_id]
-    @turn = Turn.find params[:turn_id] 
 
     score_field = params['score_field']
 
@@ -42,23 +39,23 @@ class GamesController < ApplicationController
       return
     end
 
-    dice = extract_dice(@turn)
+    dice = extract_dice(@game)
     score = eval("#{score_field}(dice)")
     
     @game.send(score_field + '=', score)
+    dice = roll_dice
+    @game.update(dice_hash(dice)) 
     @game.save
 
     update_score_sheet
 
-    dice = roll_dice
-    @turn = Turn.create(dice_hash(dice)) 
+    
     redirect_to :controller => 'games', :action => 'new_turn',
-                :game_id => @game.id, :turn_id => @turn.id
+                :game_id => @game.id
   end
 
   def new_turn
     @game = Game.find params[:game_id]
-    @turn = Turn.find params[:game_id]
     @dice_to_roll = [false] * 5
 
     render "game"

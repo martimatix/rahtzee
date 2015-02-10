@@ -1,0 +1,73 @@
+@import url(http://fonts.googleapis.com/css?family=Righteous);
+
+@media (min-width: 0px) and (max-width: 960px) {
+  .btn-success {
+    margin-top: 0px;
+    position: block;
+    top: 50px;
+    left: 225px; 
+  }
+
+  .spacer {
+    height: 0px;
+  }
+}  
+
+.btn-success {
+  margin-top: 50px;
+  position: inline-block;  
+}
+
+
+li.dice {
+  display: inline-block;
+}
+
+.dice_size {
+  width: 100px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.dummy {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-bottom: 0px;
+  z-index: 1;
+}
+
+input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+.rahtzee {
+  font-family: 'Righteous', cursive;
+  font-size: 4em;
+}
+
+.rahtzee-jumbo {
+  font-family: 'Righteous', cursive;
+  font-size: 10em;
+}
+
+.spacer {
+  height: 5em;
+}
+
+.login-spacer {
+  height: 0.3em;
+}
+
+.title_centre {
+  text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}

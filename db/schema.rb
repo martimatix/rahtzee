@@ -17,8 +17,14 @@ ActiveRecord::Schema.define(version: 20150208022322) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer  "total_score"
+    t.integer  "total_score",       default: 0
     t.boolean  "filled",            default: false
+    t.integer  "dice_1"
+    t.integer  "dice_2"
+    t.integer  "dice_3"
+    t.integer  "dice_4"
+    t.integer  "dice_5"
+    t.integer  "roll_counter",      default: 1
     t.integer  "ones"
     t.integer  "twos"
     t.integer  "threes"
@@ -37,19 +43,6 @@ ActiveRecord::Schema.define(version: 20150208022322) do
     t.integer  "rahtzee"
     t.integer  "lower_score"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "turns", force: :cascade do |t|
-    t.integer  "dice_1"
-    t.integer  "dice_2"
-    t.integer  "dice_3"
-    t.integer  "dice_4"
-    t.integer  "dice_5"
-    t.integer  "roll_counter", default: 1
-    t.integer  "game_id"
-    t.boolean  "turn_over",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

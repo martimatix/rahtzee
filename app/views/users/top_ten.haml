@@ -1,0 +1,22 @@
+%h1 Leaderboard
+
+%table.table.table-hover
+  <col width="5">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  %tr
+    %th Ranking
+    %th Name
+    %th Score
+    %th Date
+  - @top_ten.each_with_index do |game, i|
+    %tr
+      %td
+        = i + 1
+      %td
+        = game.user_id ? game.user.name : ' '
+      %td
+        = game.total_score
+      %td
+        = game.created_at.strftime("%e/%b/%Y")

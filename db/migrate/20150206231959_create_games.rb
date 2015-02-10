@@ -2,8 +2,16 @@ class CreateGames < ActiveRecord::Migration
   def change
     create_table :games do |t|
       # General
-      t.integer :total_score
+      t.integer :total_score, :default => 0
       t.boolean :filled, :default => false
+
+      t.integer :dice_1
+      t.integer :dice_2
+      t.integer :dice_3
+      t.integer :dice_4
+      t.integer :dice_5
+
+      t.integer :roll_counter, :default => 1
 
       # Upper Scores
       t.integer :ones

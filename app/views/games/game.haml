@@ -4,20 +4,20 @@
 .row
   .col-md-4
     %div.form-group
-      = form_tag "/games/#{@game.id}/#{@turn.id}/roll_again", :method => :post do
+      = form_tag "/games/#{@game.id}/roll_again", :method => :post do
         %ul
           - (1..5).to_a.each do |i|
             %li
               - box_checked = @dice_to_roll[i-1]
               = check_box_tag "dice_#{i}", '1', box_checked
-              = label_tag "dice_#{i}", "Dice #{i}: " + (@turn.send "dice_#{i}").to_s
-        = submit_tag "Roll Dice - #{ 3 - @turn.roll_counter }",
-          disabled: @turn.roll_counter >= 3
+              = label_tag "dice_#{i}", "Dice #{i}: " + (@game.send "dice_#{i}").to_s
+        = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }",
+          disabled: @game.roll_counter >= 3
 
   %div.form-group.col-md-8
 
     .row
-      = form_tag "/games/#{@game.id}/#{@turn.id}/enter_score", :method => :post do
+      = form_tag "/games/#{@game.id}/enter_score", :method => :post do
         .col-md-6
           .h4 Upper Scores
           %ul
