@@ -72,7 +72,7 @@ ul {
     margin: 0;
 }
 
-@media (min-width: 0px) and (max-width: 960px) {
+@media (min-width: 0px) and (max-width: 992px) {
   .btn-success {
     margin-top: 0px;
     position: block;
