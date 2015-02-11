@@ -1,8 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Righteous);
 
-/*body {
-  background-color: #83AF9B;
-}*/
+body {
+  background-color: grey;
+}
 
 .dice-fill {
   fill: #FE4365;
@@ -22,7 +22,12 @@
 
 .btn-success {
   margin-top: 25px;
-  position: inline-block;  
+  position: inline-block;
+  border: 3px white solid;  
+}
+
+.btn-danger {
+  border: 3px white solid;  
 }
 
 .main-container {
@@ -55,6 +60,37 @@ input[type="radio"] {
   margin-right: 0.5em;
 }
 
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.login {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1em;
+  border: 2px grey solid;
+  padding: 0.1em 1em 0.1em 1em;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.signup {
+  padding-bottom: 0.8em;
+}
+
 .navbar-brand {
   font-family: 'Righteous', cursive;
   font-size: 2em;
@@ -68,10 +104,21 @@ input[type="radio"] {
 .rahtzee-jumbo {
   font-family: 'Righteous', cursive;
   font-size: 10em;
+  color: white;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.blurb {
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 .spacer {
   height: 5em;
+}
+
+.table {
+  background-color: #d7dde5;
 }
 
 .login-spacer {
@@ -118,6 +165,12 @@ ul {
   z-index: 1;
   }
 
+  .rahtzee-jumbo {
+  font-size: 7em;
+  }
+
+}
+
 @media (min-width: 0px) and (max-width: 480px) {
 
 .dice_size {
@@ -137,6 +190,6 @@ ul {
   z-index: 1;
   }
 
-}
 
-}  
+
+}
