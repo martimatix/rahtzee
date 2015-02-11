@@ -1,7 +1,7 @@
 %h1
   = @user.name
 
-  = image_tag @user.gravatar_url(:default => 'retro')
+  = image_tag @user.gravatar_url(:size => 128, :default => 'retro')
 
 - if @user.country
   %p Country: #{ @user.country }
