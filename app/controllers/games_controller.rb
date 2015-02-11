@@ -14,11 +14,20 @@ class GamesController < ApplicationController
 
   def roll_again
     @game = Game.find params[:game_id] 
+
+    @dice_to_roll = dice_check(params)
+
+    # If the user did not select any dice to roll,
+    # render game without incrementing the roll counter.
+    if @dice_to_roll.any? == false
+      render "game"
+      return
+    end
+
     roll_count = @game.roll_counter
     @game.update :roll_counter => (roll_count + 1)
 
     # Roll Dice
-    @dice_to_roll = dice_check(params)
     @dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
       @game.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
       @game.save
@@ -43,7 +52,12 @@ class GamesController < ApplicationController
     
     @game.send(score_field + '=', score)
     dice = roll_dice
-    @game.update(dice_hash(dice)) 
+    @game.update(dice_hash(dice))
+
+    @game.roll_counter = 1
+    # Rahtzee bonus - user gets 5 rolls next turn
+    @game.roll_counter = -1 if rahtzee(dice) == 50
+
     @game.save
 
     update_score_sheet
@@ -127,7 +141,6 @@ class GamesController < ApplicationController
       upper_score
       lower_score
       total_score
-      @game.roll_counter = 1
       @game.filled = true if game_over?
       @game.save
     end
