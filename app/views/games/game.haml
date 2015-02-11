@@ -5,24 +5,22 @@
   .col-md-4
     %div.form-group
       = form_tag "/games/#{@game.id}/roll_again", :method => :post do
-        %ul
-          - (1..5).to_a.each do |i|
-            %li
-              - box_checked = @dice_to_roll[i-1]
-              = check_box_tag "dice_#{i}", '1', box_checked
-              .dice_size
-                = render :partial => "dice#{@game.send "dice_#{i}"}"
-                %label.dummy{:for => "dice_#{i}"}
-                  %img.dummy{:src => "http://1x1px.me/FF4D00-0.png"}/
-                / = label_tag "dice_#{i}", "Dice #{i}: " + (@game.send "dice_#{i}").to_s
-        = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }", class: "btn btn-success",
-          disabled: @game.roll_counter >= 3
+        .row
+          %ul
+            - (1..5).to_a.each do |i|
+              %li.dice
+                - box_checked = @dice_to_roll[i-1]
+                = check_box_tag "dice_#{i}", '1', box_checked
+                .dice_size
+                  %div{:class => ("animated wobble" if box_checked || @game.roll_counter == 1)}
+                    = render :partial => "dice#{@game.send "dice_#{i}"}"
+                    %label.dummy{:for => "dice_#{i}"}
+                      %img.dummy{:src => "http://1x1px.me/FF4D00-0.png"}/
+        .row
+          = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }", class: "btn btn-success",
+            disabled: @game.roll_counter >= 3
 
   %div.form-group.col-xs-12.col-md-8
-    .row
-      .p.spacer
-        &nbsp
-
     .row
       = form_tag "/games/#{@game.id}/enter_score", :method => :post do
         .col-md-5.col-md-offset-1.col-xs-6
