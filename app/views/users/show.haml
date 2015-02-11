@@ -8,4 +8,7 @@
 
 
 - if @user.about_me
-  %p Country: #{ @user.about_me }
+  %p About me: #{ @user.about_me }
+
+- if @current_user == @user
+  = link_to "Edit Profile", edit_user_path(@user)
