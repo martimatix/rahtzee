@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150208022322) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
-    t.string   "gravatar_url"
+    t.string   "email"
     t.text     "about_me"
     t.string   "password_digest"
     t.boolean  "is_admin",        default: false

@@ -74,6 +74,7 @@ GEM
     execjs (2.3.0)
     globalid (0.3.2)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     haml (4.0.6)
       tilt
     hike (1.2.3)
@@ -192,6 +193,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
+  gravtastic
   haml
   jbuilder (~> 2.0)
   jquery-rails
