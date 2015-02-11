@@ -18,6 +18,10 @@
   position: inline-block;  
 }
 
+.main-container {
+  padding-top: 50px;
+}
+
 
 li.dice {
   display: inline-block;
