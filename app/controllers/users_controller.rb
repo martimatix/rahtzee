@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def leaderboard
+    @leaders = Game.where(filled: true).order(total_score: :desc, filled: :desc).limit(10)
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)

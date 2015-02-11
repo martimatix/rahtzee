@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/how_to_play' => 'pages#how_to_play'
 
+  get '/leaderboard' => 'users#leaderboard'
+
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

@@ -125,7 +125,7 @@ class GamesController < ApplicationController
       upper_score
       lower_score
       total_score
-      @game.roll_counter == 1
+      @game.roll_counter = 1
       @game.filled = true if game_over?
       @game.save
     end
