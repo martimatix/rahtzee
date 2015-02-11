@@ -10,5 +10,20 @@
 - if @user.about_me
   %p About me: #{ @user.about_me }
 
+/ Return completed games of users, take the average of total_score, convert to float
+/ of 2 decimal places
+
+- user_average = @user.games.where(filled: true).average(:total_score).to_f.round(2)
+- site_average = Game.where(filled: true).average(:total_score).to_f.round(2)
+%p
+  = "Average score: #{ user_average } (Site average: #{ site_average })"
+
+%p Games played: #{ @user.games.where(filled: true).count }
+
+
+
+
+
+
 - if @current_user == @user
   = link_to "Edit Profile", edit_user_path(@user)

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @leaders = Game.where(filled: true).order(total_score: :desc, filled: :desc).limit(50)
+    @leaders = Game.where(filled: true).order(total_score: :desc).limit(50)
   end
 
   private

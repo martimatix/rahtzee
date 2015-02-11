@@ -23,7 +23,7 @@
   %div.form-group.col-xs-12.col-md-8
     .row
       = form_tag "/games/#{@game.id}/enter_score", :method => :post do
-        .col-md-5.col-md-offset-1.col-sm-6.col-xs-5
+        .col-md-5.col-md-offset-1.col-sm-6.col-xs-5.score-sheet
           .h4 Upper Scores
           %table.table.table-striped
             - Game.upper_scores.each do |field|
