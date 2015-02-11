@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root :to => 'pages#home'
-  resources :users, :only => [:new, :create, :index]
+  resources :users, :only => [:new, :create, :show, :index]
 
   get '/games/new' => 'games#new'
   # to do: add user id to path for greater verification
