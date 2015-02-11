@@ -7,6 +7,7 @@ module ApplicationHelper
       if @current_user.is_admin
         link += "<li>#{ link_to('All users', users_path)}</li>"
       end
+      links += "<li>#{ link_to('My profile', @current_user) }</li>"
       links += "<li>#{ link_to('Sign out ' + @current_user.name, login_path, :method => :delete) }</li>"
     else
       links += "<li>#{ link_to('Sign Up', new_user_path) }</li><li>#{ link_to('Log in', login_path) }</li>"

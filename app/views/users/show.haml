@@ -2,3 +2,10 @@
   = @user.name
 
   = image_tag @user.gravatar_url(:default => 'retro')
+
+- if @user.country
+  %p Country: #{ @user.country }
+
+
+- if @user.about_me
+  %p Country: #{ @user.about_me }
