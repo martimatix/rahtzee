@@ -8,9 +8,11 @@
     left: 225px; 
   }
 
-  .spacer {
-    height: 0px;
+  .rahtzee {
+    height: 0;
+    visibility: hidden;
   }
+
 }  
 
 .btn-primary {
