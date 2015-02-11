@@ -1,9 +1,9 @@
-.row
+.row.rahtzee-row
   %h1.rahtzee Rahtzee
 
 .row
   .col-md-4
-    %div.form-group
+    %div.form-group.text-center
       = form_tag "/games/#{@game.id}/roll_again", :method => :post do
         .row
           %ul
@@ -23,7 +23,7 @@
   %div.form-group.col-xs-12.col-md-8
     .row
       = form_tag "/games/#{@game.id}/enter_score", :method => :post do
-        .col-md-5.col-md-offset-1.col-xs-6
+        .col-md-5.col-md-offset-1.col-sm-6.col-xs-5
           .h4 Upper Scores
           %table.table.table-striped
             - Game.upper_scores.each do |field|
@@ -52,7 +52,7 @@
                 = label_tag "Total"
               %td.text-right
                 = @game.upper_score.to_i
-        .col-md-5.col-md-offset-1.col-xs-6
+        .col-md-5.col-sm-6.col-xs-7
           .h4 Lower Scores
           %table.table.table-striped
             - Game.lower_scores.each do |field|
@@ -75,8 +75,8 @@
                 = label_tag "Grand Total"
               %td.text-right
                 = @game.total_score.to_i
-
-          = submit_tag "Enter Score", class: "btn btn-danger"
+    .row.text-center
+      = submit_tag "Enter Score", class: "btn btn-danger"
 
 
 
