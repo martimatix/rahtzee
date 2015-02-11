@@ -1,5 +1,21 @@
 @import url(http://fonts.googleapis.com/css?family=Righteous);
 
+/*body {
+  background-color: #83AF9B;
+}*/
+
+.dice-fill {
+  fill: #FE4365;
+}
+
+/*.dice-path {
+  fill: rgba(0,0,0,0);
+}
+
+.navbar {
+  background-color: #FC9D9A;
+} 
+*/
 .btn-primary {
   margin-top: 18px;
 }
@@ -104,7 +120,7 @@ ul {
 
 @media (min-width: 0px) and (max-width: 480px) {
 
-  .dice_size {
+.dice_size {
   width: 60px;
   position: relative;
   margin-bottom: 0px;
