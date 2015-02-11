@@ -49,7 +49,8 @@ class GamesController < ApplicationController
     update_score_sheet
 
     if @game.filled
-      redirect_to games_game_over_path
+      redirect_to :controller => 'games', :action => 'game_over',
+                  :game_id => @game.id
     else
       redirect_to :controller => 'games', :action => 'new_turn',
                   :game_id => @game.id
@@ -64,6 +65,7 @@ class GamesController < ApplicationController
   end
 
   def game_over
+    @game = Game.find params[:game_id]
   end
 
   ########################### Private Methods ###########################

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @leaders = Game.where(filled: true).order(total_score: :desc, filled: :desc).limit(10)
+    @leaders = Game.where(filled: true).order(total_score: :desc, filled: :desc).limit(50)
   end
 
   private

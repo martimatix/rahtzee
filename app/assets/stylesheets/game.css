@@ -13,6 +13,10 @@
   }
 }  
 
+.btn-primary {
+  margin-top: 18px;
+}
+
 .btn-success {
   margin-top: 25px;
   position: inline-block;  
