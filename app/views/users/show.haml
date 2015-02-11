@@ -10,9 +10,10 @@
 - if @user.about_me
   %p About me: #{ @user.about_me }
 
+%p High score: #{ @user.games.maximum( :total_score )}
+
 / Return completed games of users, take the average of total_score, convert to float
 / of 2 decimal places
-
 - user_average = @user.games.where(filled: true).average(:total_score).to_f.round(2)
 - site_average = Game.where(filled: true).average(:total_score).to_f.round(2)
 %p
