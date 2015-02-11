@@ -102,4 +102,25 @@ ul {
   z-index: 1;
   }
 
+@media (min-width: 0px) and (max-width: 480px) {
+
+  .dice_size {
+  width: 60px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  }
+
+.dummy {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-bottom: 0px;
+  z-index: 1;
+  }
+
+}
+
 }  
