@@ -32,9 +32,8 @@ class GamesController < ApplicationController
 
     score_field = params['score_field']
 
-    if @game.filled
-      redirect_to games_game_over_path
-    elsif score_field.nil?
+    if score_field.nil?
+      @dice_to_roll = [false] * 5
       render "game" 
       return
     end
@@ -49,9 +48,12 @@ class GamesController < ApplicationController
 
     update_score_sheet
 
-    
-    redirect_to :controller => 'games', :action => 'new_turn',
-                :game_id => @game.id
+    if @game.filled
+      redirect_to games_game_over_path
+    else
+      redirect_to :controller => 'games', :action => 'new_turn',
+                  :game_id => @game.id
+    end
   end
 
   def new_turn

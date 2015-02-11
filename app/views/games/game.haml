@@ -29,7 +29,7 @@
             - Game.upper_scores.each do |field|
               %tr
                 %td
-                  = radio_button_tag 'score_field', field, false, disabled: @game.send(field)
+                  = radio_button_tag 'score_field', field, false, required: true, disabled: @game.send(field)
                   = label_tag 'score_field_' + field.to_s, field.to_s.humanize
                 %td.text-right
                   / Display Score
