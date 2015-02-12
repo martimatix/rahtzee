@@ -8,6 +8,11 @@ body {
   fill: #FE4365;
 }
 
+.textbox {
+  background: white;
+  margin-top: 10px;
+}
+
 /*.dice-path {
   fill: rgba(0,0,0,0);
 }

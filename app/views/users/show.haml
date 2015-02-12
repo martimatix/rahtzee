@@ -1,30 +1,30 @@
-%h1
-  = @user.name
-
-  = image_tag @user.gravatar_url(:size => 128, :default => 'retro')
-
-- if @user.country
-  %p Country: #{ @user.country }
-
-
-- if @user.about_me
-  %p About me: #{ @user.about_me }
-
-%p High score: #{ @user.games.maximum( :total_score )}
-
-/ Return completed games of users, take the average of total_score, convert to float
-/ of 2 decimal places
-- user_average = @user.games.where(filled: true).average(:total_score).to_f.round(2)
-- site_average = Game.where(filled: true).average(:total_score).to_f.round(2)
-%p
-  = "Average score: #{ user_average } (Site average: #{ site_average })"
-
-%p Games played: #{ @user.games.where(filled: true).count }
+.row.textbox
+  .col-md-4.text-right
+    %p &nbsp
+    = image_tag @user.gravatar_url(:size => 128, :default => 'retro')
+    %p &nbsp
+  .col-md-4
+    %h1
+      = @user.name
 
 
+    - if @user.country
+      %p Country: #{ @user.country }
 
 
+    - if @user.about_me
+      %p About me: #{ @user.about_me }
 
+    %p High score: #{ @user.games.maximum( :total_score )}
 
-- if @current_user == @user
-  = link_to "Edit Profile", edit_user_path(@user)
+    / Return completed games of users, take the average of total_score, convert to float
+    / of 2 decimal places
+    - user_average = @user.games.where(filled: true).average(:total_score).to_f.round(2)
+    - site_average = Game.where(filled: true).average(:total_score).to_f.round(2)
+    %p
+      = "Average score: #{ user_average } (Site average: #{ site_average })"
+
+    %p Games played: #{ @user.games.where(filled: true).count }
+
+    - if @current_user == @user
+      = link_to "Edit Profile", edit_user_path(@user)
