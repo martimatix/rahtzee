@@ -1,12 +1,14 @@
 %h1 Leaderboard
 
 %table.table.table-hover
-  <col width="5">
-  <col width="130">
-  <col width="130">
-  <col width="130">
+  <col width="10%">
+  <col width="10%">
+  <col width="60%">
+  <col width="10%">
+  <col width="10%">
   %tr
     %th Ranking
+    %th
     %th Name
     %th Score
     %th Date
@@ -15,7 +17,9 @@
       %td
         = i + 1
       %td
-        = game.user_id ? game.user.name : ' '
+        = image_tag game.user.gravatar_url(:size => 64, :default => 'retro')
+      %td
+        = link_to game.user.name, game.user
       %td
         = game.total_score
       %td
