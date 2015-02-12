@@ -16,9 +16,30 @@ body {
   color: white;
 }
 
-.dice-fill {
+.dice-fill1 {
+  fill: #FFE30E;
+}
+
+.dice-fill2 {
+  fill: #55C3DC;
+}
+
+.dice-fill3 {
+  fill: #FC8312;
+}
+
+.dice-fill4 {
+  fill: #11E023;
+}
+
+.dice-fill5 {
   fill: #FE4365;
 }
+
+.dice-fill6 {
+  fill: #FFF;
+}
+
 
 .textbox {
   background: white;
@@ -27,14 +48,14 @@ body {
   font-size: 1.3em;
 }
 
-.dice-path {
+/*.dice-path {
   fill: rgba(0,0,0,0);
-}
+}*/
 
-.navbar-nav {
+/*.navbar-nav {
   font-family: 'Questrial', sans-serif;
   font-size: 1.2em;
-} 
+} */
 
 .btn-primary {
   margin-top: 18px;
@@ -43,11 +64,13 @@ body {
 .btn-success {
   margin-top: 25px;
   position: inline-block;
-  border: 3px white solid;  
+  border: 3px white solid;
+  font-family: 'Questrial', sans-serif;  
 }
 
 .btn-danger {
-  border: 3px white solid;  
+  border: 3px white solid;
+  font-family: 'Questrial', sans-serif;  
 }
 
 .main-container {
