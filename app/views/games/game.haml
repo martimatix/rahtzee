@@ -8,10 +8,10 @@
           %ul
             - (1..5).to_a.each do |i|
               %li.dice
-                - box_checked = @dice_to_roll[i-1]
+                - box_checked = @dice_to_hold[i-1]
                 = check_box_tag "dice_#{i}", '1', box_checked
                 .dice_size
-                  %div{:class => ("animated wobble" if box_checked || @game.roll_counter == 1)}
+                  %div{:class => ("animated wobble" if !box_checked || @game.roll_counter == 1)}
                     = render :partial => "dice#{@game.send "dice_#{i}"}"
                     %label.dummy{:for => "dice_#{i}"}
         .row

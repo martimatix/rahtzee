@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     dice = roll_dice
     @game = Game.create(dice_hash(dice))
     @current_user.games << @game
-    @dice_to_roll = [false] * 5
+    @dice_to_hold = [false] * 5
 
     render "game"
   end
@@ -15,21 +15,14 @@ class GamesController < ApplicationController
   def roll_again
     @game = Game.find params[:game_id] 
 
-    @dice_to_roll = dice_check(params)
-
-    # If the user did not select any dice to roll,
-    # render game without incrementing the roll counter.
-    if @dice_to_roll.any? == false
-      render "game"
-      return
-    end
+    @dice_to_hold = dice_check(params)
 
     roll_count = @game.roll_counter
     @game.update :roll_counter => (roll_count + 1)
 
     # Roll Dice
-    @dice_to_roll.each_with_index do |user_chose_to_roll_die, i|
-      @game.send("dice_#{ i+1 }=", rand(1..6)) if user_chose_to_roll_die
+    @dice_to_hold.each_with_index do |user_chose_to_hold_die, i|
+      @game.send("dice_#{ i+1 }=", rand(1..6)) unless user_chose_to_hold_die
       @game.save
     end
 
@@ -42,7 +35,7 @@ class GamesController < ApplicationController
     score_field = params['score_field']
 
     if score_field.nil?
-      @dice_to_roll = [false] * 5
+      @dice_to_hold = [false] * 5
       render "game" 
       return
     end
@@ -69,7 +62,7 @@ class GamesController < ApplicationController
 
   def new_turn
     @game = Game.find params[:game_id]
-    @dice_to_roll = [false] * 5
+    @dice_to_hold = [false] * 5
 
     render "game"
   end
@@ -95,11 +88,11 @@ class GamesController < ApplicationController
     end
 
     def dice_check(params)
-      dice_to_roll = []
+      dice_to_hold = []
       (1..5).each do |i|
-        dice_to_roll[i - 1] = params.keys.include? "dice_#{i}"
+        dice_to_hold[i - 1] = params.keys.include? "dice_#{i}"
       end
-      dice_to_roll
+      dice_to_hold
     end
 
     def extract_dice(turn)
