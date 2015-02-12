@@ -3,7 +3,7 @@
     %h1 Your final score is #{@game.total_score}. #{ link_to('Play Again.', games_new_path) }
 
     .col-md-5.col-md-offset-1.col-xs-6
-      .h4 Upper Scores
+      .h3 Upper Scores
       %table.table
         - Game.upper_scores.each do |field|
           %tr
@@ -31,7 +31,7 @@
           %td.text-right
             = @game.upper_score.to_i
     .col-md-5.col-md-offset-1.col-xs-6
-      .h4 Lower Scores
+      .h3 Lower Scores
       %table.table
         - Game.lower_scores.each do |field|
           %tr
