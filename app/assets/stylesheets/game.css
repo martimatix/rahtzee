@@ -14,8 +14,6 @@ body {
 .score-label {
   font-family: 'Questrial', sans-serif;
   color: white;
-  padding-top: 0;
-  margin-top: 0;
 }
 
 .dice-fill {
@@ -156,11 +154,9 @@ ul {
 }
 
 @media (min-width: 0px) and (max-width: 992px) {
-  .btn-success {
-    margin-top: 0px;
+  .btn-success, .btn-danger {
+    margin-top: 7px;
     position: block;
-    top: 50px;
-    left: 225px; 
   }
 
   .rahtzee-row {
@@ -212,6 +208,8 @@ ul {
 
 .score-label {
   font-size: 20px;
+  margin-top: 7px;
+  padding-top: 7px;
 }
 
 .white {

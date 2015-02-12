@@ -1,8 +1,7 @@
-.row.rahtzee-row
-  %h1.rahtzee Rahtzee
-
 .row
   .col-md-4
+    .row.rahtzee-row
+      %h1.rahtzee Rahtzee
     %div.form-group.text-center
       = form_tag "/games/#{@game.id}/roll_again", :method => :post do
         .row
