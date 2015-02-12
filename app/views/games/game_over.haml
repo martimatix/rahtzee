@@ -1,52 +1,54 @@
-%h1 Your final score is #{@game.total_score}. #{ link_to('Play Again.', games_new_path) }
+.row
+  .textbox.col-md-10.col-md-offset-1
+    %h1 Your final score is #{@game.total_score}. #{ link_to('Play Again.', games_new_path) }
 
-.col-md-5.col-md-offset-1.col-xs-6
-  .h4 Upper Scores
-  %table.table.table-striped
-    - Game.upper_scores.each do |field|
-      %tr
-        %td
-          = label_tag 'score_field_' + field.to_s, field.to_s.humanize
-        %td.text-right
-          / Display Score
-          = @game.send(field)
+    .col-md-5.col-md-offset-1.col-xs-6
+      .h4 Upper Scores
+      %table.table
+        - Game.upper_scores.each do |field|
+          %tr
+            %td
+              = label_tag 'score_field_' + field.to_s, field.to_s.humanize
+            %td.text-right
+              / Display Score
+              = @game.send(field)
 
-    %tr
-      %td
-        = label_tag "Subtotal"
-      %td.text-right 
-        = @game.raw_upper.to_i
+        %tr
+          %td
+            = label_tag "Subtotal"
+          %td.text-right 
+            = @game.raw_upper.to_i
 
-    %tr
-      %td
-        = label_tag "Bonus (>62)"
-      %td.text-right 
-        = @game.upper_score_bonus.to_i
+        %tr
+          %td
+            = label_tag "Bonus (>62)"
+          %td.text-right 
+            = @game.upper_score_bonus.to_i
 
-    %tr
-      %td
-        = label_tag "Total"
-      %td.text-right
-        = @game.upper_score.to_i
-.col-md-5.col-md-offset-1.col-xs-6
-  .h4 Lower Scores
-  %table.table.table-striped
-    - Game.lower_scores.each do |field|
-      %tr
-        %td
-          = label_tag 'score_field_' + field.to_s, field.to_s.humanize
-        %td.text-right 
-          / Display Score
-          = @game.send(field)
+        %tr
+          %td
+            = label_tag "Total"
+          %td.text-right
+            = @game.upper_score.to_i
+    .col-md-5.col-md-offset-1.col-xs-6
+      .h4 Lower Scores
+      %table.table
+        - Game.lower_scores.each do |field|
+          %tr
+            %td
+              = label_tag 'score_field_' + field.to_s, field.to_s.humanize
+            %td.text-right 
+              / Display Score
+              = @game.send(field)
 
-    %tr
-      %td
-        = label_tag "Total"
-      %td.text-right
-        = @game.lower_score.to_i
+        %tr
+          %td
+            = label_tag "Total"
+          %td.text-right
+            = @game.lower_score.to_i
 
-    %tr
-      %td
-        = label_tag "Grand Total"
-      %td.text-right
-        = @game.total_score.to_i
+        %tr
+          %td
+            = label_tag "Grand Total"
+          %td.text-right
+            = @game.total_score.to_i
