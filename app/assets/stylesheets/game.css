@@ -23,16 +23,19 @@ body {
 .textbox {
   background: white;
   margin-top: 10px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.3em;
 }
 
-/*.dice-path {
+.dice-path {
   fill: rgba(0,0,0,0);
 }
 
-.navbar {
-  background-color: #FC9D9A;
+.navbar-nav {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.2em;
 } 
-*/
+
 .btn-primary {
   margin-top: 18px;
 }
@@ -129,6 +132,8 @@ input[type="radio"] {
 .blurb {
   color: white;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  font-family: 'Questrial', sans-serif;
+  font-size: 2em;
 }
 
 .spacer {
