@@ -1,7 +1,21 @@
 @import url(http://fonts.googleapis.com/css?family=Righteous);
+@import url(http://fonts.googleapis.com/css?family=Questrial);
 
 body {
-  background-color: grey;
+  background-color: #444444;
+}
+
+.white {
+  font-family: 'Questrial', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.score-label {
+  font-family: 'Questrial', sans-serif;
+  color: white;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .dice-fill {
@@ -104,6 +118,7 @@ input[type="radio"] {
 .rahtzee {
   font-family: 'Righteous', cursive;
   font-size: 4em;
+  color: white;
 }
 
 .rahtzee-jumbo {
@@ -122,9 +137,9 @@ input[type="radio"] {
   height: 5em;
 }
 
-.table {
+/*.table {
   background-color: #d7dde5;
-}
+}*/
 
 .login-spacer {
   height: 0.3em;
@@ -195,6 +210,12 @@ ul {
   z-index: 1;
   }
 
+.score-label {
+  font-size: 20px;
+}
 
+.white {
+  font-size: 15px;
+}
 
 }

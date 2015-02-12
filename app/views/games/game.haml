@@ -24,8 +24,8 @@
     .row
       = form_tag "/games/#{@game.id}/enter_score", :method => :post do
         .col-md-5.col-md-offset-1.col-sm-6.col-xs-5.score-sheet
-          .h4 Upper Scores
-          %table.table.table-striped
+          .h3.score-label Upper Scores
+          %table.table.white
             - Game.upper_scores.each do |field|
               %tr
                 %td
@@ -53,8 +53,8 @@
               %td.text-right
                 = @game.upper_score.to_i
         .col-md-5.col-sm-6.col-xs-7
-          .h4 Lower Scores
-          %table.table.table-striped
+          .h3.score-label Lower Scores
+          %table.table.white
             - Game.lower_scores.each do |field|
               %tr
                 %td

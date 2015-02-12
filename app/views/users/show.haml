@@ -1,9 +1,11 @@
+.row
+  %p &nbsp
 .row.textbox
-  .col-md-4.text-right
+  .col-xs-4.text-right
     %p &nbsp
     = image_tag @user.gravatar_url(:size => 128, :default => 'retro')
     %p &nbsp
-  .col-md-4
+  .col-xs-8
     %h1
       = @user.name
 
@@ -28,3 +30,5 @@
 
     - if @current_user == @user
       = link_to "Edit Profile", edit_user_path(@user)
+
+    %p &nbsp
