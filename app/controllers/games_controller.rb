@@ -15,7 +15,6 @@ class GamesController < ApplicationController
 
   def roll_again
     @game = Game.find params[:game_id] 
-    @suggestions = suggestions
     @dice_to_hold = dice_check(params)
 
     roll_count = @game.roll_counter
@@ -27,6 +26,7 @@ class GamesController < ApplicationController
       @game.save
     end
 
+    @suggestions = suggestions
     render "game"
   end
 
