@@ -135,7 +135,7 @@ input[type="radio"] {
 }
 
 .suggestion {
-  color: #555;
+  color: #666;
   font-weight: lighter;
 }
 
@@ -187,7 +187,7 @@ ul {
 }
 
 @media (min-width: 0px) and (max-width: 992px) {
-  .btn-success, .btn-danger {
+  .btn-success {
     margin-top: 7px;
     position: block;
   }
@@ -240,13 +240,18 @@ ul {
   }
 
 .score-label {
-  font-size: 20px;
-  margin-top: 7px;
-  padding-top: 7px;
+  font-size: 18px;
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 .white {
   font-size: 15px;
+}
+
+.table {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 }

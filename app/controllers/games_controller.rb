@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     @dice_to_hold = dice_check(params)
 
     roll_count = @game.roll_counter
-    @game.update :roll_counter => (roll_count + 1)
+    @game.update :roll_counter => (roll_count + 1) unless roll_count >= 3
 
     # Roll Dice
     @dice_to_hold.each_with_index do |user_chose_to_hold_die, i|
