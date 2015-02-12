@@ -218,6 +218,21 @@ ul {
   font-size: 7em;
   }
 
+  .score-label {
+  font-size: 18px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.table {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.white {
+  font-size: 15px;
+}
+
 }
 
 @media (min-width: 0px) and (max-width: 480px) {
@@ -239,19 +254,8 @@ ul {
   z-index: 1;
   }
 
-.score-label {
-  font-size: 18px;
-  margin-top: 0px;
-  padding-top: 0px;
-}
-
 .white {
   font-size: 15px;
-}
-
-.table {
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 }

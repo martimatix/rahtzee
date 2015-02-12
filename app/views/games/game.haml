@@ -14,9 +14,9 @@
                   %div{:class => ("animated wobble" if !box_checked || @game.roll_counter == 1)}
                     = render :partial => "dice#{@game.send "dice_#{i}"}"
                     %label.dummy{:for => "dice_#{i}"}
-        .row
-          = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }", class: "btn btn-success",
-            disabled: @game.roll_counter >= 3
+          .col-sm-12
+            = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }", class: "btn btn-success",
+              disabled: @game.roll_counter >= 3
 
   %div.form-group.col-xs-12.col-md-8
     .row
