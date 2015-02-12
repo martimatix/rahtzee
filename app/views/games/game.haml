@@ -14,7 +14,6 @@
                   %div{:class => ("animated wobble" if box_checked || @game.roll_counter == 1)}
                     = render :partial => "dice#{@game.send "dice_#{i}"}"
                     %label.dummy{:for => "dice_#{i}"}
-                      %img.dummy{:src => "http://1x1px.me/FF4D00-0.png"}/
         .row
           = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }", class: "btn btn-success",
             disabled: @game.roll_counter >= 3
