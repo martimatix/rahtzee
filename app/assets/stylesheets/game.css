@@ -1,8 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Righteous);
 @import url(http://fonts.googleapis.com/css?family=Questrial);
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: #444444;
+  position: relative;
 }
 
 .white {
@@ -188,7 +193,7 @@ ul {
 
 @media (min-width: 0px) and (max-width: 992px) {
   .btn-success {
-    margin-top: 7px;
+    margin-top: 6px;
     position: block;
   }
 
@@ -254,8 +259,14 @@ ul {
   z-index: 1;
   }
 
-.white {
+.white, label {
   font-size: 15px;
+  margin: 0px;
+  padding: 0px;
+}
+
+td, tr {
+  height: 16px;
 }
 
 }
