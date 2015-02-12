@@ -1,26 +1,27 @@
-%h1 Leaderboard
-
-%table.table
-  <col width="10%">
-  <col width="10%">
-  <col width="60%">
-  <col width="10%">
-  <col width="10%">
-  %tr
-    %th Ranking
-    %th
-    %th Name
-    %th Score
-    %th Date
-  - @leaders.each_with_index do |game, i|
-    %tr
-      %td
-        = i + 1
-      %td
-        = image_tag game.user.gravatar_url(:size => 64, :default => 'retro')
-      %td
-        = link_to game.user.name, game.user
-      %td
-        = game.total_score
-      %td
-        = game.created_at.strftime("%e/%b/%Y")
+.row
+  .col-md-8.col-md-offset-2
+    %h1 Leaderboard
+    %table.table
+      <col width="10%">
+      <col width="10%">
+      <col width="40%">
+      <col width="20%">
+      <col width="20%">
+      %tr
+        %th Ranking
+        %th
+        %th Name
+        %th Score
+        %th Date
+      - @leaders.each_with_index do |game, i|
+        %tr
+          %td
+            = "#{i + 1}."
+          %td
+            = image_tag game.user.gravatar_url(:size => 64, :default => 'retro')
+          %td
+            = link_to game.user.name, game.user
+          %td
+            = game.total_score
+          %td
+            = game.created_at.strftime("%e/%b/%Y")
