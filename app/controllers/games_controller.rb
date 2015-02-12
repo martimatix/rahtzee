@@ -8,13 +8,14 @@ class GamesController < ApplicationController
     @game = Game.create(dice_hash(dice))
     @current_user.games << @game
     @dice_to_hold = [false] * 5
+    @suggestions = suggestions
 
     render "game"
   end
 
   def roll_again
     @game = Game.find params[:game_id] 
-
+    @suggestions = suggestions
     @dice_to_hold = dice_check(params)
 
     roll_count = @game.roll_counter
@@ -31,6 +32,7 @@ class GamesController < ApplicationController
 
   def enter_score
     @game = Game.find params[:game_id]
+    @suggestions = suggestions
 
     score_field = params['score_field']
 
@@ -62,6 +64,7 @@ class GamesController < ApplicationController
 
   def new_turn
     @game = Game.find params[:game_id]
+    @suggestions = suggestions
     @dice_to_hold = [false] * 5
 
     render "game"
@@ -132,6 +135,12 @@ class GamesController < ApplicationController
       total_score
       @game.filled = true if game_over?
       @game.save
+    end
+
+    # Generates a hash of suggested scores
+    def suggestions
+      turn_dice = extract_dice(@game)
+      Hash[ *Game.fields.collect { |field| [ field, eval("#{field}(turn_dice)") ] }.flatten ]
     end
 
     def game_over?

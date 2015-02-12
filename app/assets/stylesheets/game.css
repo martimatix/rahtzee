@@ -134,6 +134,11 @@ input[type="radio"] {
   padding-bottom: 0.8em;
 }
 
+.suggestion {
+  color: #555;
+  font-weight: lighter;
+}
+
 .navbar-brand {
   font-family: 'Righteous', cursive;
   font-size: 2em;

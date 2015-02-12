@@ -30,8 +30,12 @@
                   = radio_button_tag 'score_field', field, false, required: true, disabled: @game.send(field)
                   = label_tag 'score_field_' + field.to_s, field.to_s.humanize
                 %td.text-right
-                  / Display Score
-                  = @game.send(field)
+                  / Display score or suggested score
+                  - if @game.send(field)
+                    = @game.send(field)
+                  - else
+                    .suggestion
+                      = @suggestions[field.to_s]
 
             %tr
               %td
@@ -59,8 +63,12 @@
                   = radio_button_tag 'score_field', field, false, required: true, disabled: @game.send(field)
                   = label_tag 'score_field_' + field.to_s, field.to_s.humanize
                 %td.text-right 
-                  / Display Score
-                  = @game.send(field)
+                  / Display score or suggested score
+                  - if @game.send(field)
+                    = @game.send(field)
+                  - else
+                    .suggestion
+                      = @suggestions[field.to_s]
 
             %tr
               %td
