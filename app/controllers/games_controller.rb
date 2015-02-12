@@ -53,11 +53,7 @@ class GamesController < ApplicationController
     @game.send(score_field + '=', score)
     dice = roll_dice
     @game.update(dice_hash(dice))
-
     @game.roll_counter = 1
-    # Rahtzee bonus - user gets 5 rolls next turn
-    @game.roll_counter = -1 if rahtzee(dice) == 50
-
     @game.save
 
     update_score_sheet
