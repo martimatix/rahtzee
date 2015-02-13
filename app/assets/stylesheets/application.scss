@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import "animate.min";
 @import "game";
 
@@ -17,4 +18,5 @@
  *
  *= require_tree .
  *= require_self
+ *
  */

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/games/:game_id/game_over' => 'games#game_over'
 
   get '/how_to_play' => 'pages#how_to_play'
+  get '/about' => 'pages#about'
 
   get '/leaderboard' => 'users#leaderboard'
 

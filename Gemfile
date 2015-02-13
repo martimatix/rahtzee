@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'gravtastic'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 gem 'rails_12factor', group: :production
 
