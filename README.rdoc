@@ -1,1 +1,1 @@
-# [Click here to play Rahtzee](http://rahtzee.herokuapp.com/)
+Play Rahtzee at http://rahtzee.herokuapp.com/
