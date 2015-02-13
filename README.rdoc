@@ -1,1 +1,3 @@
+== Welcome to Rahtzee
+
 Play Rahtzee at http://rahtzee.herokuapp.com/
