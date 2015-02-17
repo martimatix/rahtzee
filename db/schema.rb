@@ -17,8 +17,14 @@ ActiveRecord::Schema.define(version: 20150208022322) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer  "total_score"
+    t.integer  "total_score",       default: 0
     t.boolean  "filled",            default: false
+    t.integer  "dice_1"
+    t.integer  "dice_2"
+    t.integer  "dice_3"
+    t.integer  "dice_4"
+    t.integer  "dice_5"
+    t.integer  "roll_counter",      default: 1
     t.integer  "ones"
     t.integer  "twos"
     t.integer  "threes"
@@ -26,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150208022322) do
     t.integer  "fives"
     t.integer  "sixes"
     t.integer  "raw_upper"
-    t.integer  "bonus_upper_score"
+    t.integer  "upper_score_bonus", default: 0
     t.integer  "upper_score"
     t.integer  "three_of_a_kind"
     t.integer  "four_of_a_kind"
@@ -41,23 +47,10 @@ ActiveRecord::Schema.define(version: 20150208022322) do
     t.datetime "updated_at"
   end
 
-  create_table "turns", force: :cascade do |t|
-    t.integer  "dice_1"
-    t.integer  "dice_2"
-    t.integer  "dice_3"
-    t.integer  "dice_4"
-    t.integer  "dice_5"
-    t.integer  "roll_counter", default: 1
-    t.integer  "game_id"
-    t.boolean  "turn_over",    default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
-    t.string   "gravatar_url"
+    t.string   "email"
     t.text     "about_me"
     t.string   "password_digest"
     t.boolean  "is_admin",        default: false

@@ -1,0 +1,88 @@
+.row
+  .col-md-4
+    .row.rahtzee-row
+      %h1.rahtzee Rahtzee
+    %div.form-group.text-center
+      = form_tag "/games/#{@game.id}/roll_again", :method => :post do
+        .row
+          %ul
+            - (1..5).to_a.each do |i|
+              %li.dice
+                - box_checked = @dice_to_hold[i-1]
+                = check_box_tag "dice_#{i}", '1', box_checked
+                .dice_size
+                  %div{:class => ("animated wobble" if !box_checked || @game.roll_counter == 1)}
+                    = render :partial => "dice#{@game.send "dice_#{i}"}"
+                    %label.dummy{:for => "dice_#{i}"}
+          .col-sm-12
+            = submit_tag "Roll Dice - #{ 3 - @game.roll_counter }", class: "btn btn-success",
+              disabled: @game.roll_counter >= 3
+
+  %div.form-group.col-xs-12.col-md-8
+    .row
+      = form_tag "/games/#{@game.id}/enter_score", :method => :post do
+        .col-md-5.col-md-offset-1.col-sm-6.col-xs-5.score-sheet
+          .h3.score-label Upper Scores
+          %table.table.white
+            - Game.upper_scores.each do |field|
+              %tr
+                %td
+                  = radio_button_tag 'score_field', field, false, required: true, disabled: @game.send(field)
+                  = label_tag 'score_field_' + field.to_s, field.to_s.humanize
+                %td.text-right
+                  / Display score or suggested score
+                  - if @game.send(field)
+                    = @game.send(field)
+                  - else
+                    .suggestion
+                      = @suggestions[field.to_s]
+
+            %tr
+              %td
+                = label_tag "Subtotal"
+              %td.text-right 
+                = @game.raw_upper.to_i
+
+            %tr
+              %td
+                = label_tag "Bonus(>62)"
+              %td.text-right 
+                = @game.upper_score_bonus.to_i
+
+            %tr
+              %td
+                = label_tag "Total"
+              %td.text-right
+                = @game.upper_score.to_i
+        .col-md-5.col-sm-6.col-xs-7
+          .h3.score-label Lower Scores
+          %table.table.white
+            - Game.lower_scores.each do |field|
+              %tr
+                %td
+                  = radio_button_tag 'score_field', field, false, required: true, disabled: @game.send(field)
+                  = label_tag 'score_field_' + field.to_s, field.to_s.humanize
+                %td.text-right 
+                  / Display score or suggested score
+                  - if @game.send(field)
+                    = @game.send(field)
+                  - else
+                    .suggestion
+                      = @suggestions[field.to_s]
+
+            %tr
+              %td
+                = label_tag "Total"
+              %td.text-right
+                = @game.lower_score.to_i
+
+            %tr
+              %td
+                = label_tag "Grand Total"
+              %td.text-right
+                = @game.total_score.to_i
+        .row.text-center
+          = submit_tag "Enter Score", class: "btn btn-danger"
+
+
+

@@ -1,0 +1,16 @@
+.textbox.col-md-10.col-md-offset-1
+  %h1 Edit User
+
+  .form-group
+    = form_for @user do |f|
+
+      = f.label :country
+      = f.text_field :country, :class => 'form-control'
+
+      = f.label :email
+      = f.text_field :email, :class => 'form-control'
+
+      = f.label :about_me
+      = f.text_area :about_me, :class => 'form-control'
+      
+      = f.submit "Edit Profile", :class => 'btn btn-success'

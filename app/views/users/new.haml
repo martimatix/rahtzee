@@ -1,19 +1,26 @@
-%h1 Sign Up
+.textbox.col-md-10.col-md-offset-1
 
-- if @user.errors.any?
-  %ol
-    - @user.errors.full_messages.each do |msg|
-      %li= msg
+  %h1 Sign Up
 
-= form_for @user do |f|
-  %div.form-group
-    = f.label :name
-    = f.text_field :name, :autofocus => true, :required => true, :class => 'form-control'
+  - if @user.errors.any?
+    %ol
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
 
-    = f.label :password
-    = f.password_field :password, :class => 'form-control'
+  = form_for @user do |f|
+    %div.form-group
+      = f.label :name
+      = f.text_field :name, :autofocus => true, :required => true, :class => 'form-control'
 
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, :class => 'form-control'
+      = f.label :email
+      = f.text_field :email, :class => 'form-control'
 
-  = f.submit "Sign Up"
+      = f.label :password
+      = f.password_field :password, :class => 'form-control'
+
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, :class => 'form-control'
+
+    = f.submit "Sign Up", :class => 'btn btn-success'
+
+  %p &nbsp

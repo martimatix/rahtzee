@@ -1,1 +1,46 @@
-%h1 Welcome to Rahtzee
+%div#bg
+  = image_tag("macro-dice.jpg")
+
+.row
+  .col-md-8
+    %h1.rahtzee-jumbo Rahtzee
+
+    %h3.blurb An incalculably fun dice game. Sign up and play!
+
+  .col-md-4
+    .login
+      %h2= flash[:error] if flash[:error].present?
+
+      %h3 Log in
+      .form-group
+        = form_tag login_path do
+          = label_tag :name, nil
+          = text_field_tag :username, nil, class: 'form-control'
+          = label_tag :password
+          = password_field_tag :password, nil, class: 'form-control'
+          = submit_tag 'Login', class: 'btn btn-primary'
+
+    .login.signup
+      %h3 Sign Up
+
+      - if @user.errors.any?
+        %ol
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+
+      = form_for @user do |f|
+        %div.form-group
+          = f.label :name
+          = f.text_field :name, :required => true, :class => 'form-control'
+
+          = f.label :email
+          = f.text_field :email, :class => 'form-control'
+
+          = f.label :password
+          = f.password_field :password, :class => 'form-control'
+
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, :class => 'form-control'
+
+        = f.submit "Sign Up", class: 'btn btn-warning'
+

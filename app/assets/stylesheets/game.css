@@ -1,0 +1,265 @@
+@import url(http://fonts.googleapis.com/css?family=Righteous);
+@import url(http://fonts.googleapis.com/css?family=Questrial);
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #444444;
+  position: relative;
+}
+
+.white {
+  font-family: 'Questrial', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.score-label {
+  font-family: 'Questrial', sans-serif;
+  color: white;
+}
+
+.dice-fill1 {
+  fill: #FFE30E;
+}
+
+.dice-fill2 {
+  fill: #55C3DC;
+}
+
+.dice-fill3 {
+  fill: #FC8312;
+}
+
+.dice-fill4 {
+  fill: #11E023;
+}
+
+.dice-fill5 {
+  fill: #FE4365;
+}
+
+.dice-fill6 {
+  fill: #FFF;
+}
+
+
+.textbox {
+  background: white;
+  margin-top: 10px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.3em;
+}
+
+.btn-primary {
+  margin-top: 18px;
+}
+
+.btn-success {
+  margin-top: 25px;
+  position: inline-block;
+  border: 3px white solid;
+  font-family: 'Questrial', sans-serif;  
+}
+
+.btn-danger {
+  border: 3px white solid;
+  font-family: 'Questrial', sans-serif;  
+}
+
+.main-container {
+  padding-top: 50px;
+}
+
+
+li.dice {
+  display: inline-block;
+}
+
+.dice_size {
+  width: 100px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.dummy {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-bottom: 0px;
+  z-index: 1;
+}
+
+input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.login {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1em;
+  border: 2px grey solid;
+  padding: 0.1em 1em 0.1em 1em;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.signup {
+  padding-bottom: 0.8em;
+}
+
+.suggestion {
+  color: #666;
+  font-weight: lighter;
+}
+
+.navbar-brand {
+  font-family: 'Righteous', cursive;
+  font-size: 2em;
+}
+
+.rahtzee {
+  font-family: 'Righteous', cursive;
+  font-size: 4em;
+  color: white;
+}
+
+.rahtzee-jumbo {
+  font-family: 'Righteous', cursive;
+  font-size: 10em;
+  color: white;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.blurb {
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  font-family: 'Questrial', sans-serif;
+  font-size: 2em;
+}
+
+.spacer {
+  height: 5em;
+}
+
+/*.table {
+  background-color: #d7dde5;
+}*/
+
+.login-spacer {
+  height: 0.3em;
+}
+
+.title_centre {
+  text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media (min-width: 0px) and (max-width: 992px) {
+  .btn-success {
+    margin-top: 6px;
+    position: block;
+  }
+
+  .rahtzee-row {
+    height: 0;
+    visibility: hidden;
+  }
+
+  .dice_size {
+  width: 75px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  }
+
+.dummy {
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-bottom: 0px;
+  z-index: 1;
+  }
+
+  .rahtzee-jumbo {
+  font-size: 7em;
+  }
+
+  .score-label {
+  font-size: 18px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.table {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.white {
+  font-size: 15px;
+}
+
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+
+.dice_size {
+  width: 60px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  }
+
+.dummy {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-bottom: 0px;
+  z-index: 1;
+  }
+
+.white, label {
+  font-size: 15px;
+  margin: 0px;
+  padding: 0px;
+}
+
+td, tr {
+  height: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+}

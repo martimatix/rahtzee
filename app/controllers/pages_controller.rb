@@ -1,5 +1,15 @@
 class PagesController < ApplicationController
   def home
-    @user = User.find session[:user_id] if session[:user_id].present?
+    if @current_user.present?
+      redirect_to games_new_path
+    else
+      @user = User.new
+    end
+  end
+
+  def how_to_play
+  end
+
+  def about
   end
 end
