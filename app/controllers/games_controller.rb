@@ -76,6 +76,25 @@ class GamesController < ApplicationController
 
   ########################### Private Methods ###########################
 
+<<<<<<< HEAD
+  def dice_hash(dice)
+    hash = Hash.new
+    (1..5).each {|i| hash["dice_#{i}".to_sym] = dice[i-1]}
+    hash
+  end
+
+  def dice_check(params)
+    dice_to_roll = Array.new
+    (1..5).each { |i| dice_to_roll[i - 1] = params.keys.include? "dice_#{i}" }
+    dice_to_roll
+  end
+
+  def extract_dice(turn)
+    dice = Array.new
+    (1..5).to_a.each { |i| dice << eval("turn.dice_#{i}") }
+    dice
+  end 
+=======
     private
     def roll_dice(dice = [true]*5)
       dice.map! {|d| rand(1..6) if d}
@@ -147,5 +166,6 @@ class GamesController < ApplicationController
       game = Game.find params[:game_id]
       Game.fields.all? {|f| game.send f}
     end 
+>>>>>>> upstream/master
       
 end
